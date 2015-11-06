@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.summary     = 'Enhances ActiveSupport::Concern'
-  s.description = 'ConsciousConcern is a decorator for ActiveSupport::Concern'\
+  s.description = 'ConsciousConcern is a decorator for ActiveSupport::Concern '\
                   'that adds several metaprogramming features.'
 
   s.authors     = ['Janosch Müller']
