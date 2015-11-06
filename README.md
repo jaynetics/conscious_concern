@@ -7,7 +7,7 @@
 
 ConsciousConcern is a decorator for *ActiveSupport::Concern* that adds several metaprogramming features.
 
-It is useful if you have concerns that are included in a large number of models, or concerns that regulary get included in new models. It consolidates the usage of such concerns by centralizing routing, application of related concerns, migrations, and more.
+It is useful if you have concerns that are used by a large number of models, or concerns that regulary get added to new models. It consolidates the usage of such concerns by centralizing routing, application of related concerns, migrations, and more.
 
 The examples below are just some possible use cases.
 
@@ -42,7 +42,7 @@ module Likable
 end
 ```
 
-Now, if you add *Likable* to, say, your *Comment* model, your *CommentsController* will automatically include *Liking*.
+Now, if you add *Likable* to, say, your *Comment* model, your *CommentsController* will automatically include *Liking*. You can also use *prepend:* or any other methods and arguments.
 
 ### Shared routes
 
