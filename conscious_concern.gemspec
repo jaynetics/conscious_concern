@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'conscious_concern'
-  s.version     = '1.0.1'
+  s.version     = '1.0.2'
   s.license     = 'MIT'
 
   s.summary     = 'Enhances ActiveSupport::Concern'

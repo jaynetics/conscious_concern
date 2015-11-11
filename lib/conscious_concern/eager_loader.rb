@@ -27,9 +27,13 @@ module ConsciousConcern
     end
 
     def self.load_class_at_path(path)
-      require path
-      clazz = File.basename(path, '.*').classify.constantize
-      puts "eager loaded class '#{clazz}'" if debug
+      # silence harmless 'already initialized constant' warnings that might
+      # occur due to Rails autoload having previously loaded some constants.
+      silence_warnings do
+        require path
+        clazz = File.basename(path, '.*').classify.constantize
+        puts "eager loaded class '#{clazz}'" if debug
+      end
     rescue LoadError, StandardError => e
       puts e.message if debug
     end
