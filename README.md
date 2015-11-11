@@ -2,8 +2,10 @@
 # ConsciousConcern
 
 [![Gem Version](https://badge.fury.io/rb/conscious_concern.svg)](http://badge.fury.io/rb/conscious_concern)
+[![Build Status](https://travis-ci.org/janosch-x/conscious_concern.svg?branch=master)](https://travis-ci.org/janosch-x/conscious_concern)
 [![Dependency Status](https://gemnasium.com/janosch-x/conscious_concern.svg)](https://gemnasium.com/janosch-x/conscious_concern)
 [![Code Climate](https://codeclimate.com/github/janosch-x/conscious_concern/badges/gpa.svg)](https://codeclimate.com/github/janosch-x/conscious_concern)
+[![Test Coverage](https://codeclimate.com/github/janosch-x/conscious_concern/badges/coverage.svg)](https://codeclimate.com/github/janosch-x/conscious_concern/coverage)
 
 ConsciousConcern is a decorator for *ActiveSupport::Concern* that adds several metaprogramming features.
 
