@@ -99,7 +99,9 @@ end
 
 *ConsciousConcern* needs to know about your models and controllers. By default, *::load_classes* assumes they'll be in the standard Rails paths.
 
-If you have them in special paths, pass these paths to *::load_classes*. Subdirectories are searched automatically.
+If you have them in special paths, pass these paths to *::load_classes*.
+
+In either case, subdirectories are searched automatically.
 
 ```ruby
 # /config/initializers/conscious_concern.rb
