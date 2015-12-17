@@ -31,11 +31,11 @@ module ConsciousConcern
       # occur due to Rails autoload having previously loaded some constants.
       silence_warnings do
         require path
-        clazz = File.basename(path, '.*').classify.constantize
-        puts "eager loaded class '#{clazz}'" if debug
+        puts "eager loaded class at #{path}" if debug
       end
     rescue LoadError, StandardError => e
-      puts e.message if debug
+      return puts(e.message) if debug
+      raise e unless e.message =~ /(previous definition|define multiple)/
     end
   end
 end
