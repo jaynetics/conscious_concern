@@ -70,6 +70,16 @@ describe ConsciousConcern do
     end
   end
 
+  describe '#tables' do
+    it 'lists all tables that are associated with a model concern' do
+      expect(Likable.tables.sort).to eq(%w(comments posts))
+    end
+
+    it 'lists all tables that are associated with a controller concern' do
+      expect(PostsGenerating.tables).to eq(%w(posts))
+    end
+  end
+
   describe '#resources' do
     it 'adds routes for all models that use this concern' do
       Rails.application.routes.draw do
