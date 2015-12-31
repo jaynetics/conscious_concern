@@ -112,7 +112,7 @@ ConsciousConcern.load_classes(my_special_model_dir,
 
 ### Without Rails
 
-If you are not using Rails, call *::load_classes* and pass the appropriate directories before using any of the features.
+If you are using ActiveRecord without Rails, call *::load_classes* and pass the appropriate directories before using any of the features.
 
 ### Contributions
 
