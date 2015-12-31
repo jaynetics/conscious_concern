@@ -52,22 +52,22 @@ module ConsciousConcern
   alias_method :_models, :models
 
   def resources(options = { only: [] }, &resource_routing_block)
-    resource_args = _undecorated_table_names
+    resource_args = _route_keys
     app_routes_block = resource_routing_block.binding.eval('self')
     app_routes_block.instance_eval do
       resources(*resource_args, options, &resource_routing_block)
     end
   end
 
+  def route_keys
+    _models.map { |model| model.try(:model_name).try(:route_key) }.compact
+  end
+  alias_method :_route_keys, :route_keys
+
   def tables
     _models.map { |model| model.try(:table_name) }.compact
   end
   alias_method :_tables, :tables
-
-  def undecorated_table_names
-    _models.map { |model| model.try(:send, :undecorated_table_name) }.compact
-  end
-  alias_method :_undecorated_table_names, :undecorated_table_names
 
   def let_controllers(method_args_hash)
     _classes_loaded_callbacks << proc do
