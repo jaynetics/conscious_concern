@@ -21,11 +21,10 @@ Add it to your gemfile or run
 
 ### Usage
 
-If you are using Rails, add an initializer:
+If you are using Rails, add this to your application.rb / engine.rb:
 
 ```ruby
-# /config/initializers/conscious_concern.rb
-ConsciousConcern.load_classes
+config.to_prepare { ConsciousConcern.load_classes }
 ```
 
 This will let *ConsciousConcern* know about your models and controllers.
@@ -95,24 +94,31 @@ Likable.tables.each do |likable_table|
 end
 ```
 
-### Special directory structures
+### Special directory structures, Engines, and no Rails
 
 *ConsciousConcern* needs to know about your models and controllers. By default, *::load_classes* assumes they'll be in the standard Rails paths.
 
-If you have them in special paths, pass these paths to *::load_classes*.
-
-In either case, subdirectories are searched automatically.
+If you have models or controllers in special paths, pass these paths to *::load_classes*.
 
 ```ruby
-# /config/initializers/conscious_concern.rb
 ConsciousConcern.load_classes(my_special_model_dir,
                               my_other_model_dir,
                               my_controller_dir)
 ```
 
-### Without Rails
+If you are using an Engine with the classes in the usual places, just pass it to *::load_classes*.
 
-If you are using ActiveRecord without Rails, call *::load_classes* and pass the appropriate directories before using any of the features.
+```ruby
+ConsciousConcern.load_classes(engine: MyModule::MyEngine)
+```
+
+If you are using ActiveRecord without Rails, call *::load_classes* with *rails: false* and pass the appropriate directories before using any of the features.
+
+```ruby
+ConsciousConcern.load_classes(my_model_dir, rails: false)
+```
+
+In every case, subdirectories are searched automatically.
 
 ### Contributions
 

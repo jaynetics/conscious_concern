@@ -50,7 +50,7 @@ describe ConsciousConcern do
 
   describe '#controllers' do
     it 'lists all controllers that use a controller concern' do
-      expect(PostsGenerating.controllers)
+      expect(PostsGenerating.controllers.to_a)
         .to eq([PostsController])
     end
 
@@ -66,7 +66,7 @@ describe ConsciousConcern do
     end
 
     it 'lists all models that are associated with a controller concern' do
-      expect(PostsGenerating.models).to eq([Post])
+      expect(PostsGenerating.models.to_a).to eq([Post])
     end
   end
 

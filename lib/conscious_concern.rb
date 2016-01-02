@@ -3,18 +3,21 @@
 #
 module ConsciousConcern
   require_relative File.join('conscious_concern', 'eager_loader')
+  require 'set'
   require 'active_support/concern'
   include ActiveSupport::Concern
 
-  def self.load_classes(*custom_dirs)
-    ConsciousConcern::EagerLoader.load_classes_in_rails_dir('controllers')
-    ConsciousConcern::EagerLoader.load_classes_in_rails_dir('models')
+  def self.load_classes(*custom_dirs, engine: nil, rails: true)
+    std_dirs = %w(controllers models)
+    EagerLoader.load_classes_in_engine_dirs(engine, *std_dirs) if engine
+    EagerLoader.load_classes_in_rails_dirs(*std_dirs) if rails
     custom_dirs.each { |dir| EagerLoader.load_classes_in_dir(dir) }
+
     extenders.each { |concern| concern._classes_loaded_callbacks.each(&:call) }
   end
 
   def self.extenders
-    @extenders ||= []
+    @_extenders ||= Set.new
   end
 
   def self.extended(base)
@@ -24,7 +27,7 @@ module ConsciousConcern
 
   def included(base = nil, &block)
     _classes << base if base && base.is_a?(Class)
-    super
+    super unless base.nil? && instance_variable_defined?(:@_included_block)
   end
 
   def prepended(base = nil)
@@ -35,7 +38,7 @@ module ConsciousConcern
   # underscore aliases protect core functionality against overrides in extenders
 
   def classes
-    @_classes ||= []
+    @_classes ||= Set.new
   end
   alias_method :_classes, :classes
 

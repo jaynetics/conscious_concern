@@ -9,17 +9,17 @@ describe ConsciousConcern::EagerLoader do
     before(:all) { ConsciousConcern::EagerLoader.debug = true  }
     after(:all)  { ConsciousConcern::EagerLoader.debug = false }
 
-    describe '#load_classes_in_rails_dir' do
+    describe '#load_classes_in_rails_dirs' do
       it 'warns if no rails root is found' do
         without_rails_root do
           expect(STDOUT).to receive(:puts).with(/rails/i)
-          ConsciousConcern::EagerLoader.load_classes_in_rails_dir('models')
+          ConsciousConcern::EagerLoader.load_classes_in_rails_dirs('models')
         end
       end
 
       it 'warns if the passed directory isnt found' do
         expect(STDOUT).to receive(:puts).with(/not found/i)
-        ConsciousConcern::EagerLoader.load_classes_in_rails_dir('bad_dir')
+        ConsciousConcern::EagerLoader.load_classes_in_rails_dirs('bad_dir')
       end
     end
 
