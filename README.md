@@ -7,7 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/janosch-x/conscious_concern/badges/gpa.svg)](https://codeclimate.com/github/janosch-x/conscious_concern)
 [![Test Coverage](https://codeclimate.com/github/janosch-x/conscious_concern/badges/coverage.svg)](https://codeclimate.com/github/janosch-x/conscious_concern/coverage)
 
-ConsciousConcern is a decorator for *ActiveSupport::Concern* that adds several metaprogramming features.
+ConsciousConcern is a decorator for `ActiveSupport::Concern` that adds several metaprogramming features.
 
 It is useful if you have concerns that are used by a large number of models, or concerns that regulary get added to new models. It consolidates the usage of such concerns by centralizing routing, application of related concerns, migrations, and more.
 
@@ -27,13 +27,13 @@ If you are using Rails, add this to your application.rb / engine.rb:
 config.to_prepare { ConsciousConcern.load_classes }
 ```
 
-This will let *ConsciousConcern* know about your models and controllers.
+This will let `ConsciousConcern` know about your models and controllers.
 
-Now you can extend *ConsciousConcern* instead of *ActiveSupport::Concern* in your modules.
+Now you can extend `ConsciousConcern` instead of `ActiveSupport::Concern` in your modules.
 
 ### Automatic controller integration
 
-Let's assume you have a *Likable* concern for your models and a corresponding *Liking* concern for your controllers. Instead of including *Liking* manually in your controllers and keeping the controllers up to date when something new becomes *Likable* or something old is no longer *Likable*, just add a line to the model concern:
+Let's assume you have a `Likable` concern for your models and a corresponding `Liking` concern for your controllers. Instead of including `Liking` manually in your controllers and keeping the controllers up to date when something new becomes `Likable` or something old is no longer `Likable`, just add a line to the model concern:
 
 ```ruby
 module Likable
@@ -43,7 +43,7 @@ module Likable
 end
 ```
 
-Now, if you add *Likable* to, say, your *Comment* model, your *CommentsController* will automatically include *Liking*. You can also use *prepend:* or any other methods and arguments.
+Now, if you add `Likable` to, say, your `Comment` model, your `CommentsController` will automatically include `Liking`. You can also use `prepend:` or any other methods and arguments.
 
 ### Shared routes
 
@@ -96,9 +96,9 @@ end
 
 ### Special directory structures, Engines, and no Rails
 
-*ConsciousConcern* needs to know about your models and controllers. By default, *::load_classes* assumes they'll be in the standard Rails paths.
+`ConsciousConcern` needs to know about your models and controllers. By default, `::load_classes` assumes they'll be in the standard Rails paths.
 
-If you have models or controllers in special paths, pass these paths to *::load_classes*.
+If you have models or controllers in special paths, pass these paths to `::load_classes`.
 
 ```ruby
 ConsciousConcern.load_classes(my_special_model_dir,
@@ -106,13 +106,13 @@ ConsciousConcern.load_classes(my_special_model_dir,
                               my_controller_dir)
 ```
 
-If you are using an Engine with the classes in the usual places, just pass it to *::load_classes*.
+If you are using an Engine with the classes in the usual places, just pass it to `::load_classes`.
 
 ```ruby
 ConsciousConcern.load_classes(engine: MyModule::MyEngine)
 ```
 
-If you are using ActiveRecord without Rails, call *::load_classes* with *rails: false* and pass the appropriate directories before using any of the features.
+If you are using ActiveRecord without Rails, call `::load_classes` with `rails: false` and pass the appropriate directories before using any of the features.
 
 ```ruby
 ConsciousConcern.load_classes(my_model_dir, rails: false)
