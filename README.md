@@ -7,7 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/janosch-x/conscious_concern/badges/gpa.svg)](https://codeclimate.com/github/janosch-x/conscious_concern)
 [![Test Coverage](https://codeclimate.com/github/janosch-x/conscious_concern/badges/coverage.svg)](https://codeclimate.com/github/janosch-x/conscious_concern/coverage)
 
-ConsciousConcern is a decorator for `ActiveSupport::Concern` that adds several metaprogramming features.
+ConsciousConcern is a decorator for `ActiveSupport::Concern` that adds several metaprogramming features, willfully ignoring MVC constraints.
 
 It is useful if you have concerns that are used by a large number of models, or concerns that regulary get added to new models. It consolidates the usage of such concerns by centralizing routing, application of related concerns, migrations, and more.
 
