@@ -1,5 +1,5 @@
 
-# ConsciousConcern
+# ConsciousConcern test
 
 [![Gem Version](https://badge.fury.io/rb/conscious_concern.svg)](http://badge.fury.io/rb/conscious_concern)
 [![Build Status](https://travis-ci.org/janosch-x/conscious_concern.svg?branch=master)](https://travis-ci.org/janosch-x/conscious_concern)
